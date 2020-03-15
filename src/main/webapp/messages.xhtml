@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-button {
+                margin-right: 4px;
+            }
+
+            .form-grid td {
+                padding: 16px 2px;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="card">
+                        <h1>Messages</h1>
+
+                        <p:tooltip />
+                        <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true" />
+
+                        <p:commandButton value="Info" update="growl" actionListener="#{messagesView.info}" immediate="true" style="width:100px"/>
+                        <p:commandButton value="Warn" update="growl" actionListener="#{messagesView.warn}" immediate="true" styleClass="deep-orange-btn" style="width:100px"/>
+                        <p:commandButton value="Error" update="growl" actionListener="#{messagesView.error}" immediate="true" styleClass="red-btn" style="width:100px"/>
+                        <p:commandButton value="Fatal" update="growl" actionListener="#{messagesView.fatal}" immediate="true" styleClass="indigo-btn" style="width:100px"/>
+
+                        <p:growl id="growl" sticky="true"/>
+
+                        <p:panelGrid id="grid" columns="3" styleClass="ui-panelgrid-blank form-group" style="margin-top:20px">
+                            <p:outputLabel for="default" value="Default:" />
+                            <p:inputText id="default" required="true" />
+                            <p:message for="default" />
+
+                            <p:outputLabel for="txt" value="Text:" />
+                            <p:inputText id="txt" required="true" />
+                            <p:message for="txt" display="text" />
+
+                            <p:outputLabel for="icon" value="Icon:" />
+                            <p:inputText id="icon" required="true" />
+                            <p:message for="icon" display="icon" />
+                        </p:panelGrid>
+
+                        <p:commandButton id="submitButton" value="Submit" styleClass="green-btn" update="grid growl" />
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

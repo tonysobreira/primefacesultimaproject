@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template2.xhtml">
+    <ui:param name="bodyClass" value="login-body"/>
+
+    <ui:define name="content">
+    
+	    <h:form id="form" prependId="false">
+	    
+	    	<p:growl id="growl" showDetail="true" life="3000" />
+	    
+	        <div class="card login-panel ui-fluid">
+	            <div class="ui-g">
+	                <div class="ui-g-12">
+	                    <p:graphicImage value="#{resource['ultima-layout:images/logo-ultima.svg']}"/>
+	                </div>
+	                <div class="ui-g-12">
+	                    <span class="md-inputfield">
+	                        <p:inputText id="cpf" value="#{cadastroBean.cpf}" required="true" label="cpf" />
+	                        <label>CPF</label>
+	                    </span>
+	                </div>
+	                <div class="ui-g-12">
+	                    <span class="md-inputfield">
+	                        <p:inputText id="nome" value="#{cadastroBean.nome}" required="true" label="nome" />
+	                        <label>Nome</label>
+	                    </span>
+	                </div>
+	                <div class="ui-g-12">
+	                    <span class="md-inputfield">
+	                        <p:inputText id="email" value="#{cadastroBean.email}" required="true" label="email" />
+	                        <label>Email</label>
+	                    </span>
+	                </div>
+	                <div class="ui-g-12">
+	                    <span class="md-inputfield">
+	                        <p:password id="senha" value="#{cadastroBean.senha}" required="true" label="senha" feedback="true" match="repetirSenha" />
+	                        <label>Senha</label>
+	                    </span>
+	                </div>
+	                <div class="ui-g-12">
+	                    <span class="md-inputfield">
+	                        <p:password id="repetirSenha" value="#{cadastroBean.senha}" required="true" label="repetirSenha" feedback="true" />
+	                        <label>Repetir Senha</label>
+	                    </span>
+	                </div>
+	                <div class="ui-g-12">
+	                	<p:commandButton id="cadastrar" value="Cadastrar" update="growl" actionListener="#{cadastroBean.cadastrarUsuario()}" icon="ui-icon-person"
+	                		process="@this @form" oncomplete="PF('cadastroDialogWidget').show()" />
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <p:dialog header="Usuário cadastrado com sucesso!" widgetVar="cadastroDialogWidget" modal="true" closable="false" resizable="false">
+				<p:outputPanel styleClass="text-align-center">
+		    		<p:commandButton value="Ok" actionListener="#{cadastroBean.finalizar}" process="@this" />
+		    	</p:outputPanel>
+			</p:dialog>
+        
+        </h:form>
+
+        <div class="login-footer">Primefaces Ultima</div>
+    </ui:define>
+</ui:composition>

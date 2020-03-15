@@ -1,0 +1,74 @@
+/*
+ * Copyright 2009-2015 PrimeTek.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package br.com.base.ultima.view.input;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+//import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+
+import org.omnifaces.cdi.ViewScoped;
+
+@Named
+@ViewScoped
+//@SessionScoped
+public class RadioView implements Serializable {
+
+    private String console;
+    private String city;
+    private List<String> cities;
+    private String color;
+
+    @PostConstruct
+    public void init() {
+        cities = new ArrayList<>();
+        cities.add("Icarus");
+        cities.add("Omega");
+        cities.add("Apollo");
+        cities.add("Morpheus");
+    }
+
+    public String getConsole() {
+        return console;
+    }
+
+    public void setConsole(String console) {
+        this.console = console;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public List<String> getCities() {
+        return cities;
+    }
+}

@@ -1,0 +1,129 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pu="http://primefaces.org/ultima">
+    <h:form id="menuform">
+        <div class="layout-menu #{guestPreferences.menuColor}">
+            <div class="nano">
+                <div class="nano-content menu-scroll-content">
+                    <h:panelGroup rendered="#{(guestPreferences.menuMode ne 'horizontal') and (guestPreferences.profile ne 'top')}">
+                        <div class="profile">
+                            <div class="profile-image"/>
+                            <a id="profile-options" href="#">
+                                <span class="profile-name">Jane Williams</span>
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </a>
+                        </div>
+
+                        <ul id="profile-menu" class="ultima-menu">
+                            <li role="menuitem">
+                                <a href="#" class="ripplelink">
+                                    <i class="material-icons">person</i>
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                            <li role="menuitem">
+                                <a href="#" class="ripplelink">
+                                    <i class="material-icons">security</i>
+                                    <span>Privacy</span>
+                                </a>
+                            </li>
+                            <li role="menuitem">
+                                <a href="#" class="ripplelink">
+                                    <i class="material-icons">settings_applications</i>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                            <li role="menuitem">
+                                <a href="#{request.contextPath}/logout" class="ripplelink">
+                                    <i class="material-icons">power_settings_new</i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </h:panelGroup>
+
+                    <pu:menu widgetVar="me">
+                        <p:menuitem id="um_dashboards" outcome="/dashboard.xhtml" icon="material-icons " value="Dashboard"/>
+
+                        <p:submenu id="themes" label="Themes" icon="material-icons palette">
+                            <p:menuitem id="theme1" icon="material-icons brush" value="Indigo - Pink" actionListener="#{guestPreferences.setTheme('ultima-indigo')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="theme2" icon="material-icons brush" value="Brown - Green" actionListener="#{guestPreferences.setTheme('ultima-brown')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="theme3" icon="material-icons brush" value="Blue - Amber" actionListener="#{guestPreferences.setTheme('ultima-blue')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="theme4" icon="material-icons brush" value="Blue Grey - Green" actionListener="#{guestPreferences.setTheme('ultima-blue-grey')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="theme5" icon="material-icons brush" value="Dark - Blue" actionListener="#{guestPreferences.setTheme('ultima-dark-blue')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="theme6" icon="material-icons brush" value="Dark - Green" actionListener="#{guestPreferences.setTheme('ultima-dark-green')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="theme7" icon="material-icons brush" value="Green - Yellow" actionListener="#{guestPreferences.setTheme('ultima-green')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="theme8" icon="material-icons brush" value="Purple - Cyan" actionListener="#{guestPreferences.setTheme('ultima-purple-cyan')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="theme9" icon="material-icons brush" value="Purple - Amber" actionListener="#{guestPreferences.setTheme('ultima-purple-amber')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="theme10" icon="material-icons brush" value="Teal - Lime" actionListener="#{guestPreferences.setTheme('ultima-teal')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="theme11" icon="material-icons brush" value="Cyan - Amber" actionListener="#{guestPreferences.setTheme('ultima-cyan')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="theme12" icon="material-icons brush" value="Grey - Deep Orange" actionListener="#{guestPreferences.setTheme('ultima-grey')}" immediate="true" ajax="false"/>
+                        </p:submenu>
+
+                        <p:submenu id="um_customization" label="Customization" icon="material-icons settings">
+                            <p:menuitem id="custom1" icon="material-icons fiber_manual_record" value="Compact Size" actionListener="#{guestPreferences.setFontSize('layout-compact')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="custom2" icon="material-icons fiber_smart_record" value="Material Size" actionListener="#{guestPreferences.setFontSize('')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="custom3" icon="material-icons menu" value="Static Menu" actionListener="#{guestPreferences.setMenuMode('static')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="custom4" icon="material-icons exit_to_app" value="Overlay Menu" actionListener="#{guestPreferences.setMenuMode('overlay')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="custom5" icon="material-icons border_horizontal" value="Horizontal Menu" actionListener="#{guestPreferences.setMenuMode('horizontal')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="custom6" icon="material-icons label_outline" value="Light Menu" actionListener="#{guestPreferences.setMenuColor('')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="custom7" icon="material-icons label" value="Dark Menu" actionListener="#{guestPreferences.setMenuColor('layout-menu-dark')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="custom8" icon="material-icons contacts" value="Inline Profile" actionListener="#{guestPreferences.setProfile('inline')}" immediate="true" ajax="false"/>
+                            <p:menuitem id="custom9" icon="material-icons person_pin" value="Top Profile" actionListener="#{guestPreferences.setProfile('top')}" immediate="true" ajax="false"/>
+                        </p:submenu>
+
+                        <p:submenu id="um_components" label="Components" icon="material-icons list">
+                            <p:menuitem id="um_sample" outcome="/sample.xhtml" icon="material-icons desktop_mac" value="Sample Page"/>
+                            <p:menuitem id="um_forms" outcome="/forms.xhtml" icon="material-icons input" value="Forms"/>
+                            <p:menuitem id="um_data" outcome="/data.xhtml" icon="material-icons grid_on" value="Data"/>
+                            <p:menuitem id="um_panels" outcome="/panel.xhtml" icon="material-icons content_paste" value="Panels"/>
+                            <p:menuitem id="um_overlays" outcome="/overlay.xhtml" icon="material-icons content_copy" value="Overlays"/>
+                            <p:menuitem id="um_menus" outcome="/menu.xhtml" icon="material-icons menu" value="Menus"/>
+                            <p:menuitem id="um_messages" outcome="/messages.xhtml" icon="material-icons message" value="Messages"/>
+                            <p:menuitem id="um_charts" outcome="/charts.xhtml" icon="material-icons insert_chart" value="Charts"/>
+                            <p:menuitem id="um_file" outcome="/file.xhtml" icon="material-icons attach_file" value="File"/>
+                            <p:menuitem id="um_misc" outcome="/misc.xhtml" icon="material-icons toys" value="Misc"/>
+                        </p:submenu>
+
+                        <p:submenu id="um_default" label="Template Pages" icon="material-icons get_app">
+                            <p:menuitem id="um_db_landing" outcome="/landing.xhtml" icon="material-icons flight_land" value="Landing"/>
+                            <p:menuitem id="um_empty" outcome="/empty.xhtml" icon="material-icons hourglass_empty" value="Empty Page"/>
+                            <p:menuitem id="um_login" outcome="/login.xhtml" icon="material-icons verified_user" value="Login Page"/>
+                            <p:menuitem id="um_error" outcome="/error.xhtml" icon="material-icons error" value="Error Page"/>
+                            <p:menuitem id="um_404" outcome="/404.xhtml" icon="material-icons error_outline" value="404 Page"/>
+                            <p:menuitem id="um_access" outcome="/access.xhtml" icon="material-icons security" value="Access Denied Page"/>
+                        </p:submenu>
+
+                        <p:submenu id="um_hierarchy" label="Menu Hierarchy" icon="material-icons menu">
+                            <p:submenu id="um_sm1" label="Submenu 1" icon="material-icons subject">
+                                <p:submenu id="um_sm11" label="Submenu 1.1" icon="material-icons subject">
+                                    <p:menuitem id="um_lnk111" url="#" icon="material-icons subject" value="Link 1.1.1"/>
+                                    <p:menuitem id="um_lnk112" url="#" icon="material-icons subject" value="Link 1.1.2"/>
+                                    <p:menuitem id="um_lnk113" url="#" icon="material-icons subject" value="Link 1.1.3"/>
+                                </p:submenu>
+                                <p:submenu id="um_sm12" label="Submenu 1.2" icon="material-icons subject">
+                                    <p:menuitem id="um_lnk121" url="#" icon="material-icons subject" value="Link 1.2.1"/>
+                                </p:submenu>
+                            </p:submenu>
+                            <p:submenu id="um_sm2" label="Submenu 2" icon="material-icons subject">
+                                <p:submenu id="um_sm21" label="Submenu 2.1" icon="material-icons subject">
+                                    <p:menuitem id="um_lnk211" url="#" icon="material-icons subject" value="Link 2.1.1"/>
+                                    <p:menuitem id="um_lnk212" url="#" icon="material-icons subject" value="Link 2.1.2"/>
+                                </p:submenu>
+                                <p:submenu id="um_sm22" label="Submenu 2.2" icon="material-icons subject">
+                                    <p:menuitem id="um_lnk221" url="#" icon="material-icons subject" value="Link 2.2.1"/>
+                                </p:submenu>
+                            </p:submenu>
+                        </p:submenu>
+
+                        <p:menuitem id="um_utils" outcome="/utils.xhtml" icon="material-icons build" value="Utils"/>
+                        <p:menuitem id="um_doc" outcome="/docs.xhtml" icon="material-icons find_in_page" value="Documentation"/>
+                    </pu:menu>
+                </div>
+            </div>
+        </div>
+    </h:form>
+</ui:composition>
